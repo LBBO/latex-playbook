@@ -7,11 +7,16 @@
 
 \newcommand{\character}[1]{\textbf{\MakeUppercase{#1}}}
 \newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
+\def\BlockStageDirection#1 \par{
+	\textit{#1}
+	\linebreak
+}
 
 \title{Lorem ipsum Play}
 \author{John Doe}
 
 \begin{document}
+\begin{flushleft}
 
 \character{Alice} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -24,7 +29,9 @@ sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
 diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
 erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
 et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-ipsum dolor sit amet. 
+ipsum dolor sit amet.
+
+\BlockStageDirection Bob enters the stage.
 
 \character{Bob} \InlineStageDirection{quietly} Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
 molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
@@ -104,5 +111,7 @@ suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem
 vel eum iriure dolor in hendrerit in vulputate velit esse molestie
 consequat, vel illum dolore eu feugiat nulla facilisis at vero eros
 et accumsan et iusto odio dignissim qui blandit praesent luptatum
-zzril delenit augue duis dolore te feugait nulla facilisi. 
+zzril delenit augue duis dolore te feugait nulla facilisi.
+
+\end{flushleft}
 \end{document}
