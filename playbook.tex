@@ -1,16 +1,31 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[a4paper, margin=1in]{geometry}
 \usepackage[ngerman,german]{babel}
 \usepackage{fontspec}
+\usepackage{setspace}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{lipsum}
+
+\definecolor{AppearingCharacters}{RGB}{67, 67, 67}
 
 \newcommand{\character}[1]{\textbf{\MakeUppercase{#1}}}
 \newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
 \def\BlockStageDirection#1 \par{
-	\textit{#1}
-	\linebreak
+	\textit{#1}\par % \par turns #1 into it's own paragraph with usual formatting
 }
+\newcommand{\scene}[2]{{
+	\setlength{\parskip}{20pt}
+	{\fontsize{16}{16}\textbf{\MakeUppercase{#1}}}\\
+	\textcolor{AppearingCharacters}{\fontsize{14}{14}\selectfont#2}
+	\par % \par turns #1 into it's own paragraph with usual formatting
+}}
+
+% Force empty line between paragraphs
+\setlength{\parskip}{1em}
+
+\onehalfspacing
 
 \title{Lorem ipsum Play}
 \author{John Doe}
@@ -19,6 +34,10 @@
 
 \begin{document}
 \begin{flushleft}
+
+\scene{First scene - Lorem ipsum}{Alice, Bob (+ Mr. Evil)}
+
+\BlockStageDirection \lipsum[1]
 
 \character{Alice} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -35,85 +54,29 @@ ipsum dolor sit amet.
 
 \BlockStageDirection Bob enters the stage.
 
-\character{Bob} \InlineStageDirection{quietly} Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
-eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
-zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
-dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+\character{Bob} \InlineStageDirection{quietly} \lipsum[2] 
 
-\character{Alice} Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem
-vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
-accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-delenit augue duis dolore te feugait nulla facilisi. 
+\character{Alice} \lipsum[3]
 
-\character{Bob} Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit
-amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
-ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
-ea commodo consequat. 
+\character{Bob} \lipsum[4]
 
-\character{Alice} Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-molestie consequat, vel illum dolore eu feugiat nulla facilisis. 
+\character{Alice} \lipsum[5]
 
-\character{Bob} At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam
-aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed
-tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna
-no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum
-dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat. 
+\BlockStageDirection Alice leaves.
 
-\character{Alice} \InlineStageDirection{angrily} Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
-sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-gubergren, no sea takimata sanctus. 
+\scene{Second scene - dolor sit amet}{Alice, Bob (+ Mr. Evil)}
 
-\character{Bob} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-sit amet. 
+\BlockStageDirection Alice returns.
 
-\character{Alice} Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-vero eros et accumsan et iusto odio dignissim qui blandit praesent
-luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-volutpat. 
+\character{Bob} \lipsum[6]
 
-\character{Bob} Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem
-vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-consequat, vel illum dolore eu feugiat nulla facilisis at vero eros
-et accumsan et iusto odio dignissim qui blandit praesent luptatum
-zzril delenit augue duis dolore te feugait nulla facilisi.
+\character{Alice} \InlineStageDirection{angrily} \lipsum[7]
+
+\character{Bob} \lipsum[8]
+
+\character{Alice} \lipsum[9]
+
+\character{Bob} \lipsum[10]
 
 \end{flushleft}
 \end{document}
