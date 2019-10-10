@@ -18,6 +18,7 @@ pdfauthor={ChaosTRUB},
 }
 
 \definecolor{AppearingCharacters}{RGB}{67, 67, 67}
+\definecolor{SignatureLineColor}{RGB}{136, 136, 136}
 
 \newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}}
 \newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
@@ -30,6 +31,9 @@ pdfauthor={ChaosTRUB},
 	\textcolor{AppearingCharacters}{\fontsize{14}{14}\selectfont#2}
 	\par % \par turns #1 into it's own paragraph with usual formatting
 }}
+
+\newcommand{\TitlePageLine}[3]{\fontsize{#1}{#2}\selectfont #3 \par}
+\newcommand{\TitlePageLineBold}[3]{\fontsize{#1}{#2}\selectfont \textbf{#3} \par}
 
 % Force empty line between paragraphs
 \setlength{\parskip}{1em}
