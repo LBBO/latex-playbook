@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, margin=1in]{geometry}
-\usepackage[ngerman,german]{babel}
+\usepackage[ngerman]{babel}
 \usepackage{setspace}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{lipsum}
@@ -11,7 +11,7 @@
 
 \definecolor{AppearingCharacters}{RGB}{67, 67, 67}
 
-\newcommand{\character}[1]{\textbf{\MakeUppercase{#1}}}
+\newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}}
 \newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
 \def\BlockStageDirection#1 \par{
 	\textit{#1}\par % \par turns #1 into it's own paragraph with usual formatting
