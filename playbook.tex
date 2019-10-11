@@ -2,16 +2,28 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, margin=1in]{geometry}
-\usepackage[ngerman,german]{babel}
+\usepackage[ngerman]{babel}
 \usepackage{setspace}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{lipsum}
 \usepackage[sfdefault]{roboto}
 \usepackage[T1]{fontenc}
+\usepackage{soul} % underline links
+\usepackage[hidelinks, urlcolor=blue, colorlinks=true]{hyperref} % create nice looking links (blue)
+
+\newcommand{\PlayTitle}{Lorem ipsum Play}
+\newcommand{\GroupName}{Lorem ipsum Author}
+\hypersetup{
+bookmarks=true, % set bookmarks for every section, subsection etc. in the PDF file
+bookmarksnumbered=true,
+pdftitle={\PlayTitle}, % set the title and author in the PDF meta info
+pdfauthor={\GroupName},
+}
 
 \definecolor{AppearingCharacters}{RGB}{67, 67, 67}
+\definecolor{SignatureLineColor}{RGB}{136, 136, 136}
 
-\newcommand{\character}[1]{\textbf{\MakeUppercase{#1}}}
+\newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}}
 \newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
 \def\BlockStageDirection#1 \par{
 	\textit{#1}\par % \par turns #1 into it's own paragraph with usual formatting
@@ -23,15 +35,37 @@
 	\par % \par turns #1 into it's own paragraph with usual formatting
 }}
 
+\newcommand{\TitlePageLine}[3]{\fontsize{#1}{#2}\selectfont #3 \par}
+\newcommand{\TitlePageLineBold}[3]{\fontsize{#1}{#2}\selectfont \textbf{#3} \par}
+
 % Force empty line between paragraphs
 \setlength{\parskip}{1em}
 
 \onehalfspacing
 
-\title{Lorem ipsum Play}
-\author{John Doe}
-
 \begin{document}
+
+
+\begin{titlepage}
+\begin{center}
+\TitlePageLineBold{18pt}{18pt}{Dieser Text gehört:} 
+\vspace{1.25cm}
+\textcolor{SignatureLineColor}{\rule{1\textwidth}{0.8pt}}
+
+\TitlePageLine{18pt}{18pt}{Mitglied des} 
+\TitlePageLineBold{36pt}{36pt}{\GroupName,}
+\TitlePageLine{18pt}{18pt}{der am} 
+\TitlePageLineBold{36pt}{36pt}{10. + 11. Januar 2020}
+\TitlePageLine{18pt}{18pt}{im} 
+\TitlePageLineBold{36pt}{36pt}{MZ der RUB}
+\TitlePageLine{24pt}{36pt}{das Stück “\PlayTitle” von Heinrich von Kleist aufführt.}
+\TitlePageLineBold{36pt}{36pt}{Eintritt frei!}
+\vspace{2.5cm}
+\TitlePageLine{18pt}{27pt}{Falls Sie diesen Text finden, würden wir uns sehr freuen, wenn Sie ihn im Musischen Zentrum der RUB abgeben \mbox{} oder eine Mail an \setuldepth{info}\href{mailto:info@chaostrub.de}{\ul{info@chaostrub.de}} schreiben würden.}
+\end{center}
+\end{titlepage}
+
+
 \begin{flushleft}
 
 \scene{First scene - Lorem ipsum}{Alice, Bob (+ Mr. Evil)}
