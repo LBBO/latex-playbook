@@ -10,11 +10,14 @@
 \usepackage[T1]{fontenc}
 \usepackage{soul} % underline links
 \usepackage[hidelinks, urlcolor=blue, colorlinks=true]{hyperref} % create nice looking links (blue)
+
+\newcommand{\PlayTitle}{Lorem ipsum Play}
+\newcommand{\GroupName}{Lorem ipsum Author}
 \hypersetup{
 bookmarks=true, % set bookmarks for every section, subsection etc. in the PDF file
 bookmarksnumbered=true,
-pdftitle={Lorem ipsum Play}, % set the title and author in the PDF meta info
-pdfauthor={ChaosTRUB},
+pdftitle={\PlayTitle}, % set the title and author in the PDF meta info
+pdfauthor={\GroupName},
 }
 
 \definecolor{AppearingCharacters}{RGB}{67, 67, 67}
@@ -53,12 +56,12 @@ pdfauthor={ChaosTRUB},
 \textcolor{SignatureLineColor}{\rule{1\textwidth}{0.8pt}}
 
 \TitlePageLine{18pt}{18pt}{Mitglied des} 
-\TitlePageLineBold{36pt}{36pt}{ChaosTRUB,}
+\TitlePageLineBold{36pt}{36pt}{\GroupName,}
 \TitlePageLine{18pt}{18pt}{der am} 
 \TitlePageLineBold{36pt}{36pt}{10. + 11. Januar 2020}
 \TitlePageLine{18pt}{18pt}{im} 
 \TitlePageLineBold{36pt}{36pt}{MZ der RUB}
-\TitlePageLine{24pt}{36pt}{das Stück “Der zerbrochene Krug” \mbox{} \qquad von Heinrich von Kleist aufführt.}
+\TitlePageLine{24pt}{36pt}{das Stück “\PlayTitle” von Heinrich von Kleist aufführt.}
 \TitlePageLineBold{36pt}{36pt}{Eintritt frei!}
 \vspace{2.5cm}
 \TitlePageLine{18pt}{27pt}{Falls Sie diesen Text finden, würden wir uns sehr freuen, wenn Sie ihn im Musischen Zentrum der RUB abgeben \mbox{} oder eine Mail an \setuldepth{info}\href{mailto:info@chaostrub.de}{\ul{info@chaostrub.de}} schreiben würden.}
