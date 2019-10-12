@@ -5,6 +5,8 @@
 \usepackage[ngerman]{babel}
 \usepackage{setspace}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{colortbl} % fill table cells with color
+\usepackage{float} % place a table where you want it and not where LaTeX wants it because of free space
 \usepackage{lipsum}
 \usepackage[sfdefault]{roboto}
 \usepackage[T1]{fontenc}
@@ -12,7 +14,7 @@
 \usepackage[hidelinks, urlcolor=blue, colorlinks=true]{hyperref} % create nice looking links (blue)
 
 \newcommand{\PlayTitle}{Lorem ipsum Play}
-\newcommand{\GroupName}{Lorem ipsum Author}
+\newcommand{\GroupName}{Lorem ipsum Group}
 \hypersetup{
 bookmarks=true, % set bookmarks for every section, subsection etc. in the PDF file
 bookmarksnumbered=true,
@@ -22,6 +24,8 @@ pdfauthor={\GroupName},
 
 \definecolor{AppearingCharacters}{RGB}{67, 67, 67}
 \definecolor{SignatureLineColor}{RGB}{136, 136, 136}
+\definecolor{TableColorAppearance}{RGB}{153, 153, 153}
+\definecolor{TableColorSemiAppearance}{RGB}{204, 204, 204}
 
 \newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}}
 \newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
@@ -64,6 +68,44 @@ pdfauthor={\GroupName},
 \TitlePageLine{18pt}{27pt}{Falls Sie diesen Text finden, würden wir uns sehr freuen, wenn Sie ihn im Musischen Zentrum der RUB abgeben \mbox{} oder eine Mail an \setuldepth{info}\href{mailto:info@chaostrub.de}{\ul{info@chaostrub.de}} schreiben würden.}
 \end{center}
 \end{titlepage}
+
+\begin{titlepage}
+\begin{flushleft}
+\TitlePageLineBold{26pt}{26pt}{\setuldepth{Der}\ul\PlayTitle}
+\vspace{0.5cm}
+
+\begin{table}[H] % if you place [H] here, the table will be where you want it to be and not where LaTeX wants it to be because of free space
+\begin{tabular}{p{4cm} p{5cm} p{3cm} p{2cm}}
+People:& & & \\
+\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
+\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
+\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
+\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
+\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
+\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
+\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
+& & & \\
+\multicolumn{2}{l}{Location: Huisum} &\multicolumn{2}{l}{Time: Present (1811)} \\
+
+\end{tabular}
+\end{table}
+
+
+\begin{table}[H] % if you place [H] here, the table will be where you want it to be and not where LaTeX wants it to be because of free space
+\begin{tabular}{|c|c|c|}
+\hline
+Scene & Pages & Adam \\ \hline
+1 & 1 - 2 & \cellcolor{TableColorAppearance} \\ \hline
+2 & 2 - 3 & \\ \hline
+3 & 4 - 7 & \cellcolor{TableColorSemiAppearance} + \\ \hline
+4 & 7 - 10 & \\ \hline
+
+\end{tabular}
+\end{table}
+
+\end{flushleft}
+\end{titlepage}
+
 
 
 \begin{flushleft}
