@@ -27,7 +27,7 @@ pdfauthor={\GroupName},
 \definecolor{TableColorAppearance}{RGB}{153, 153, 153}
 \definecolor{TableColorSemiAppearance}{RGB}{204, 204, 204}
 
-\newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}}
+\newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}\refstepcounter{#1}\label{#1}}
 \newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
 \def\BlockStageDirection#1 \par{
 	\textit{#1}\par % \par turns #1 into it's own paragraph with usual formatting
