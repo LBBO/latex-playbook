@@ -11,7 +11,7 @@
 \usepackage[sfdefault]{roboto}
 \usepackage[T1]{fontenc}
 \usepackage{soul} % underline links
-\usepackage[hidelinks, urlcolor=blue, colorlinks=true]{hyperref} % create nice looking links (blue)
+\usepackage[hidelinks, linkcolor=black, urlcolor=blue, colorlinks=true]{hyperref} % create nice looking links (blue)
 
 \newcommand{\PlayTitle}{Lorem ipsum Play}
 \newcommand{\GroupName}{Lorem ipsum Group}
@@ -27,7 +27,7 @@ pdfauthor={\GroupName},
 \definecolor{TableColorAppearance}{RGB}{153, 153, 153}
 \definecolor{TableColorSemiAppearance}{RGB}{204, 204, 204}
 
-\newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}}
+\newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}\refstepcounter{#1}\label{#1}}
 \newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
 \def\BlockStageDirection#1 \par{
 	\textit{#1}\par % \par turns #1 into it's own paragraph with usual formatting
@@ -74,11 +74,18 @@ pdfauthor={\GroupName},
 \TitlePageLineBold{26pt}{26pt}{\setuldepth{Der}\ul\PlayTitle}
 \vspace{0.5cm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Create a counter for every role here:
+\newcounter{Alice}
+\newcounter{Bob}
+
+
+%Fill in the people in this table:
 \begin{table}[H] % if you place [H] here, the table will be where you want it to be and not where LaTeX wants it to be because of free space
 \begin{tabular}{p{4cm} p{5cm} p{3cm} p{2cm}}
 People:& & & \\
-\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
-\textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
+\textbf{ALICE}, AN ARTIST & x\ref{Alice} & Master of LaTeX & John Doe \\
+\textbf{BOB}, BUSDRIVER & x\ref{Bob} & Master of LaTeX & John Doe \\
 \textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
 \textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
 \textbf{ADAM}, JUDGE & x999 & Master of LaTeX & John Doe \\
@@ -90,6 +97,7 @@ People:& & & \\
 \end{tabular}
 \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}[H] % if you place [H] here, the table will be where you want it to be and not where LaTeX wants it to be because of free space
 \begin{tabular}{|c|c|c|}
@@ -124,8 +132,7 @@ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
 sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
 diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
 erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-ipsum dolor sit amet.
+et ea rebum.
 
 \BlockStageDirection Bob enters the stage.
 
@@ -133,7 +140,7 @@ ipsum dolor sit amet.
 
 \character{Alice} \lipsum[3]
 
-\character{Bob} \lipsum[4]
+\character{Bob} \lipsum[5]
 
 \character{Alice} \lipsum[5]
 
@@ -143,15 +150,11 @@ ipsum dolor sit amet.
 
 \BlockStageDirection Alice returns.
 
-\character{Bob} \lipsum[6]
-
 \character{Alice} \InlineStageDirection{angrily} \lipsum[7]
 
 \character{Bob} \lipsum[8]
 
 \character{Alice} \lipsum[9]
-
-\character{Bob} \lipsum[10]
 
 \end{flushleft}
 \end{document}
