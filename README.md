@@ -24,6 +24,8 @@ There is a block where counters are created for each and every character. Replac
 
 **ATTENTION:** The character's name is case-sensitive here! It has to be spelled **exactly** as it will be throughout the rest of the play.
 
+**ATTENTION:** The LaTeX file must be compiled twice to correctly output the couters' results! The first compilation after a change will only result in question marks instead of correct numbers.
+
 #### Fill out the table of characters
 Below the counters, there is a table that states the characters' names, how often they appear, what they are like, and who they are played by. Most of this information will have to be filled out manually, except for the number of appearances: insert `\ref{Name of character}` instead.
 
