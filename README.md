@@ -13,6 +13,7 @@ As this is a 100%-LaTeX project, you will need to have that installed before con
 ### Setup characters
 The LaTeX file will automatically count the characters' appearances for you, but it needs some help getting started.
 
+<!-- TODO -->
 First of all, find the title page (i.e. by searching for `\begin{titlepage}`). This page is going to require some setup.
 
 #### Create a counter for each character
