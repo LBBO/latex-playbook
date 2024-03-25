@@ -13,13 +13,14 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v4
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
-          root_file: src/main.tex
+          root_file: main.tex
+          working_directory: src
 
       # From https://github.com/latextemplates/scientific-thesis-template/blob/main/.github/workflows/build-and-publish-with-latexmk.yml
       - name: Gather build artifacts
-        run: mkdir build && cp main.pdf build/play.pdf && cp -r docs/* build/
+        run: mkdir build && cp src/main.pdf build/play.pdf && cp -r docs/* build/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
