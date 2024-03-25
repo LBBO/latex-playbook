@@ -1,0 +1,44 @@
+% These commands start a cue for n actors / actresses, where n is represented by the number of 's' in the command name.
+% n = 1, 2 are special cases, but characterss also exists for maximal consistency.
+\newcommand{\character}[1]{\par\textbf{\MakeUppercase{#1}}\refstepcounter{#1}\label{#1}}
+\newcommand{\characters}[2]{\par\textbf{\MakeUppercase{#1}} \& \textbf{\MakeUppercase{#2}}\refstepcounter{#1}\label{#1}\refstepcounter{#2}\label{#2}}
+\newcommand{\characterss}[2]{\characters{#1}{#2}}
+\newcommand{\charactersss}[3]{\par\textbf{\MakeUppercase{#1}} \& \textbf{\MakeUppercase{#2}} \& \textbf{\MakeUppercase{#3}}\refstepcounter{#1}\label{#1}\refstepcounter{#2}\label{#2}\refstepcounter{#3}\label{#3}}
+\newcommand{\characterssss}[4]{\par\textbf{\MakeUppercase{#1}} \& \textbf{\MakeUppercase{#2}} \& \textbf{\MakeUppercase{#3}} \& \textbf{\MakeUppercase{#4}}\refstepcounter{#1}\label{#1}\refstepcounter{#2}\label{#2}\refstepcounter{#3}\label{#3}\refstepcounter{#4}\label{#4}}
+\newcommand{\charactersssss}[5]{\par\textbf{\MakeUppercase{#1}} \& \textbf{\MakeUppercase{#2}} \& \textbf{\MakeUppercase{#3}} \& \textbf{\MakeUppercase{#4}} \& \textbf{\MakeUppercase{#5}}\refstepcounter{#1}\label{#1}\refstepcounter{#2}\label{#2}\refstepcounter{#3}\label{#3}\refstepcounter{#4}\label{#4}\refstepcounter{#5}\label{#5}}
+
+% Commands for stage directions, either within a cue or as a cue-like block
+\newcommand{\InlineStageDirection}[1]{\textit{(#1)}}
+\newcommand{\BlockStageDirection}[1]{\par{\textit{#1}}}
+
+
+% Formatting of headlines for acts and scenes
+\titleformat{\section}
+    {\fontsize{20}{20}\bfseries}{}{0pt}{}
+\titlespacing{\section}{0pt}{\parskip}{\parskip} %Die 0pt am Anfang, damit links am Rand und die beiden \parskip, damit der Abstand nach unten und oben wie gewollt ist.
+\titleformat{\subsection}
+    {\fontsize{16}{16}\bfseries}{}{0pt}{}
+\titlespacing{\subsection}{0pt}{\parskip}{0pt} %Die 0pt am Anfang, damit links am Rand, das \parskip, damit der Abstabd wie gewollt ist und die 0pt, damit die Charaktere direkt unter der Szene stehen.
+
+% Start a new act (pass the act name as an argument)
+\newcommand{\act}[1]{{
+   \setlength{\parskip}{24pt}
+  {\section{\uppercase{#1}}}
+}}
+
+% Start a new scene (pass the scene name and subtitle as arguments)
+\newcommand{\scene}[2]{{
+    \setlength{\parskip}{24pt}
+  {\subsection{\uppercase{#1}}}
+  \textcolor{AppearingCharacters}{\fontsize{14}{14}\selectfont#2}
+}}
+
+
+
+\newcommand{\TitlePageLine}[3]{\fontsize{#1}{#2}\selectfont #3 \par}
+\newcommand{\TitlePageLineBold}[3]{\fontsize{#1}{#2}\selectfont \textbf{#3} \par}
+
+% Force empty line between paragraphs
+\setlength{\parskip}{1em}
+
+\onehalfspacing

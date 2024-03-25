@@ -1,0 +1,36 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage{setspace}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{colortbl} % fill table cells with color
+\usepackage{float} % place a table where you want it and not where LaTeX wants it because of free space
+\usepackage{lipsum}
+\usepackage{totcount} % Abrufen des Gesamtwerts statt nur des aktuellen Werts eines Counters.
+\usepackage{parskip} % Um parskip nutzen zu können.
+\usepackage{pdflscape}
+\usepackage[sfdefault]{roboto}
+\usepackage[T1]{fontenc}
+\usepackage{soul} % underline links
+\usepackage[hidelinks, linkcolor=black, urlcolor=blue, colorlinks=true]{hyperref} % create nice looking links (blue)
+\usepackage{titlesec} % change the appearance of section titles
+
+\input{config}
+\input{colors}
+\input{custom_commands}
+
+\begin{document}
+
+\input{title_page}
+
+\begin{flushleft}
+
+% Act 1 should not have a leading page break since the appearance table takes a full page.
+\input{act_1}
+% All following act should start on new pages, hence include vs input.
+\include{act_2}
+
+\end{flushleft}
+\end{document}
