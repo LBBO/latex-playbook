@@ -36,11 +36,14 @@ Now comes the main part: writing the actual play! In order to correctly format t
 * `\BlockStageDirection Stage direction` - Add a large stage direction (i.e. multiple characters entering the stage and interacting with each other without saying anything) that is important enough to be "its own line". Please note the absence of curly braces around the actual stage direction!
 
 #### Fill out the table of scenes and appearances
-This table in `src/title_page.tex` gives the actors and actrisses a quick overview of who appears in which scene and which pages the scene is on. Create one column per character and one row per scene. You'll need to fill in the page numbers manually (for now) and then add information about who is needed during every scene.
+By running one of the scripts, you can auto-generate this table. However, you will need to fill in the page numbers and silent appearances manually. The script will generate a table with all the scenes and the characters that appear in them.
 
-Our convention is to make the table cell dark grey (we added a color called `TableColorAppearance` for this) if the character says anything in a scene, light gray (we added a color called `TableColorSemiAppearance` for this) with a "+" if the character doesn't have any lines but technically is still present, and blank if the character is absent during the entire scene.
+```sh
+cd go-scripts
+go run . create-scene-table --src ../src
+```
 
-This table's code should look somewhat like this:
+This table's code should then look somewhat like this:
 
 ```tex
 Scene & Pages & Character 1 & Character 2 & ... & Character n \\ \hline
