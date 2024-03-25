@@ -1,0 +1,10 @@
+title: Template repository for LaTeX-based theater plays
+description: This is where you can find the automatically deployed PDF of the LaTeX-based theater play.
+theme: jekyll-theme-cayman
+anchors: true
+show_downloads: true
+
+# Change download URLs
+github:
+  pdf_url: https://lbbo.github.io/latex-playbook/play.pdf
+  zip_url: https://github.com/LBBO/latex-playbook/zipball/main

@@ -1,0 +1,8 @@
+\begin{table}[H] % if you place [H] here, the table will be where you want it to be and not where LaTeX wants it to be because of free space
+\begin{tabular}{|c|c|{{ range .Characters}}c|{{ end }}}
+\hline
+Scene & Pages {{ range .Characters}}& {{ . }} {{ end }}\\ \hline
+% For semi-appearances, use \cellcolor{TableColorSemiAppearance} +{{ range .Scenes }}
+{{ .SceneShortName }} & ? - ? {{ range .OccurrenceValues }}& {{ . }} {{ end }}\\ \hline{{ end }}
+\end{tabular}
+\end{table}

@@ -1,0 +1,56 @@
+\begin{titlepage}
+  \begin{center}
+  \TitlePageLineBold{18pt}{18pt}{This text belongs to:} 
+  \vspace{1.25cm}
+  \textcolor{SignatureLineColor}{\rule{1\textwidth}{0.8pt}}
+  
+  \TitlePageLine{18pt}{18pt}{Member of} 
+  \TitlePageLineBold{36pt}{36pt}{\GroupName,}
+  \TitlePageLine{18pt}{18pt}{Visit us on} 
+  \TitlePageLineBold{36pt}{36pt}{\PerformanceDates}
+  \TitlePageLine{18pt}{18pt}{at} 
+  \TitlePageLineBold{36pt}{36pt}{\PerformanceLocation}
+  \TitlePageLine{24pt}{36pt}{to see us perform “\PlayTitle” by \PlayAuthor.}
+  \TitlePageLineBold{36pt}{36pt}{Free admission!}
+  \vspace{2.5cm}
+  \TitlePageLine{18pt}{27pt}{In case you find this playbook, it would be great if you could notify us at
+  \setuldepth{text without dee* letters}% Prevent underline to be too deep if email adress contains deep letters (such as p or q)
+  \href{mailto:group@example.com}{\ul{group@example.com}}.}
+  \end{center}
+  \end{titlepage}
+  
+  \begin{titlepage}
+  \begin{flushleft}
+  \TitlePageLineBold{26pt}{26pt}{\setuldepth{Der}\ul\PlayTitle}
+  %\vspace{0.5cm}
+  
+  \input{character_counters}
+  
+  % Fill in the people in this table. The first column is for the character's name and description.
+  % It can be helpful to have their "nickname" that is used for cues (= counters) to be set in bold font.
+  \begin{table}[H] % if you place [H] here, the table will be where you want it to be and not where LaTeX wants it to be because of free space
+  \begin{tabular}{p{10cm} l l}
+  \multicolumn{1}{l}{Characters: \hspace{10cm} In: Germany} &\multicolumn{2}{l}{Time: Present (2024)}\\
+  JOHN \textbf{DOE}, Some amazing person & x\total{doe} & Actor 1\\
+  JANE \textbf{SMITH}, Another amazing person & x\total{smith} & Actress 2\\
+  \textbf{JACK} WHOEVER, Not so relevant & x\total{jack} & Actress 3\\
+  \end{tabular}
+  \end{table}
+  
+  
+  \setcounter{tocdepth}{2}
+  \normalsize
+  \pdfbookmark[1]{\contentsname}{toc}\tableofcontents 	%Nimmt das Inhaltsverzeichnis in die PDF Lesezeichenstruktur auf und erzeugt das Inhaltsverzeichnis.
+  
+  
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{landscape}
+  
+  \include{occurrence_page}
+  
+  \end{landscape}
+  
+  \end{flushleft}
+\end{titlepage}
+  
