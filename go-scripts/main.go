@@ -1,6 +1,8 @@
 package main
 
 import (
+	"github.com/lbbo/latex-playbook/go-scripts/extractPageNumbers"
+	occurrenceSubtitles "github.com/lbbo/latex-playbook/go-scripts/occurrence-subtitles"
 	"log"
 	"os"
 
@@ -24,6 +26,34 @@ func main() {
 					},
 				},
 				Action: createSceneTableAction.CreateSceneTableAction,
+			},
+			{
+				Name:  "update-scene-occurrence-subtitles",
+				Usage: "Updates the character occurrences in scene's subtitles",
+				Flags: []cli.Flag{
+					&cli.PathFlag{
+						Name:  "src",
+						Usage: "Path to the latex source folder",
+						Value: "../src",
+					},
+				},
+				Action: occurrenceSubtitles.UpdateCharacterOccurrenceSubtitles,
+			},
+			{
+				Name:  "extract-page-numbers",
+				Usage: "Create scene table",
+				Flags: []cli.Flag{
+					&cli.PathFlag{
+						Name:  "src",
+						Usage: "Path to the latex source folder",
+						Value: "../src",
+					},
+					&cli.PathFlag{
+						Name:  "pdf",
+						Usage: "Path to current PDF file",
+					},
+				},
+				Action: extractPageNumbers.ExtractPageNumbers,
 			},
 		},
 	}

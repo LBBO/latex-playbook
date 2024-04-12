@@ -3,10 +3,9 @@ package createSceneTableAction
 import (
 	"embed"
 	"fmt"
+	"github.com/lbbo/latex-playbook/go-scripts/utils"
 	"strings"
 	"text/template"
-	"unicode"
-	"unicode/utf8"
 )
 
 type sceneDescription struct {
@@ -15,27 +14,25 @@ type sceneDescription struct {
 }
 
 type templateData struct {
-	Characters []string
-	Scenes     []sceneDescription
+	Characters  []string
+	Scenes      []sceneDescription
+	SceneCounts []uint
 }
 
 //go:embed templates/*
 var templates embed.FS
 
-func computeLatex(characters []string, actOccurrences []actOccurrences) (string, error) {
-	var capitalizedCharacters []string
+func computeLatex(characters []string, actOccurrences []ActOccurrences) (string, error) {
+	capitalizedCharacters, err := utils.CapitalizeCharacters(characters)
 
-	for _, character := range characters {
-		r, size := utf8.DecodeRuneInString(character)
-		if r == utf8.RuneError {
-			return "", fmt.Errorf("could not decode rune in string: %w", r)
-		}
-		capitalizedCharacters = append(capitalizedCharacters, string(unicode.ToUpper(r))+character[size:])
+	if err != nil {
+		return "", fmt.Errorf("could not capitalize characters: %w", err)
 	}
 
 	data := templateData{
-		Characters: capitalizedCharacters,
-		Scenes:     computeSceneDescriptors(actOccurrences, characters),
+		Characters:  capitalizedCharacters,
+		Scenes:      computeSceneDescriptors(actOccurrences, characters),
+		SceneCounts: countTotalScenesPerCharacter(characters, actOccurrences),
 	}
 
 	return renderLatex(data)
@@ -43,7 +40,7 @@ func computeLatex(characters []string, actOccurrences []actOccurrences) (string,
 
 const latexForOccurrence = "\\cellcolor{TableColorAppearance}"
 
-func computeSceneDescriptors(actOccurrences []actOccurrences, characters []string) []sceneDescription {
+func computeSceneDescriptors(actOccurrences []ActOccurrences, characters []string) []sceneDescription {
 	sceneDescriptors := make([]sceneDescription, 0)
 	for actIndex, actOccurrence := range actOccurrences {
 		for sceneIndex, scene := range actOccurrence {
@@ -54,8 +51,8 @@ func computeSceneDescriptors(actOccurrences []actOccurrences, characters []strin
 			for _, character := range characters {
 				occurrenceValue := strings.Repeat(" ", len(latexForOccurrence))
 
-				if scene[strings.ToLower(character)] {
-					occurrenceValue = "\\cellcolor{TableColorAppearance}"
+				if scene[strings.ToLower(character)] > 0 {
+					occurrenceValue = fmt.Sprintf("%s %d", latexForOccurrence, scene[strings.ToLower(character)])
 				}
 
 				occurrenceValues = append(occurrenceValues, occurrenceValue)
@@ -86,4 +83,18 @@ func renderLatex(data templateData) (string, error) {
 		return "", fmt.Errorf("could not execute template: %w", err)
 	}
 	return result.String(), nil
+}
+
+func countTotalScenesPerCharacter(characters []string, actOccurrences []ActOccurrences) []uint {
+	sceneCounts := make([]uint, len(characters))
+	for _, actOccurrence := range actOccurrences {
+		for _, scene := range actOccurrence {
+			for characterIndex, character := range characters {
+				if scene[strings.ToLower(character)] > 0 {
+					sceneCounts[characterIndex]++
+				}
+			}
+		}
+	}
+	return sceneCounts
 }
