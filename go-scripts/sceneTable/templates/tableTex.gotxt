@@ -1,3 +1,4 @@
+\begin{landscape}
 \begin{table}[H] % if you place [H] here, the table will be where you want it to be and not where LaTeX wants it to be because of free space
 \begin{tabular}{|c|c|{{ range .Characters}}c|{{ end }}}
 \hline
@@ -8,3 +9,4 @@ Szene & Seiten {{ range .Characters}}& {{ . }} {{ end }}\\ \hline
 
 \end{tabular}
 \end{table}
+\end{landscape}
