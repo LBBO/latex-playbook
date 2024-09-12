@@ -33,7 +33,7 @@ jobs:
         with:
           email: github-actions[bot]@users.noreply.github.com
           username: github-actions[bot]
-          commit_message: "Update scene list and character occurrences"
+          message: "Update scene list and character occurrences"
           files: src/*.tex
 
       - name: Re-compile LaTeX document
