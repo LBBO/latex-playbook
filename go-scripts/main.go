@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/lbbo/latex-playbook/go-scripts/extractPageNumbers"
-	occurrenceSubtitles "github.com/lbbo/latex-playbook/go-scripts/occurrence-subtitles"
 	"log"
 	"os"
+
+	"github.com/lbbo/latex-playbook/go-scripts/extractPageNumbers"
+	occurrenceSubtitles "github.com/lbbo/latex-playbook/go-scripts/occurrence-subtitles"
 
 	createSceneTableAction "github.com/lbbo/latex-playbook/go-scripts/sceneTable"
 	"github.com/urfave/cli/v2"
@@ -49,8 +50,9 @@ func main() {
 						Value: "../src",
 					},
 					&cli.PathFlag{
-						Name:  "pdf",
-						Usage: "Path to current PDF file",
+						Name:     "pdf",
+						Usage:    "Path to current PDF file",
+						Required: true,
 					},
 				},
 				Action: extractPageNumbers.ExtractPageNumbers,

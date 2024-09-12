@@ -2,13 +2,14 @@ package occurrenceSubtitles
 
 import (
 	"fmt"
-	createSceneTableAction "github.com/lbbo/latex-playbook/go-scripts/sceneTable"
-	"github.com/lbbo/latex-playbook/go-scripts/utils"
-	"github.com/urfave/cli/v2"
 	"os"
 	"path"
 	"regexp"
 	"strings"
+
+	createSceneTableAction "github.com/lbbo/latex-playbook/go-scripts/sceneTable"
+	"github.com/lbbo/latex-playbook/go-scripts/utils"
+	"github.com/urfave/cli/v2"
 )
 
 func UpdateCharacterOccurrenceSubtitles(c *cli.Context) error {
@@ -56,11 +57,27 @@ func updateAct(actTexFilePath string, characters []string, actOccurrences create
 		newCharactersList := strings.Join(available, ", ")
 
 		rest = rest[:]
-		regex := regexp.MustCompile(`\\scene\{(.*?)}\{(.*?)}`)
+		// The `}{` is moved into the second capture group to allow the second `{}`
+		// to be empty and still be able to find the capture group uniquely within
+		// the entire match so that we can insert the new character list into it.
+		regex := regexp.MustCompile(`\\scene\{(.*?)(}\{.*?)}`)
 		matchIndexes := regex.FindStringSubmatchIndex(rest)
 		if matchIndexes != nil {
-			sceneTitleTex := strings.Replace(rest[matchIndexes[0]:matchIndexes[1]], rest[matchIndexes[4]:matchIndexes[5]], newCharactersList, 1)
-			fileContent = strings.Replace(fileContent, rest[matchIndexes[0]:matchIndexes[1]], sceneTitleTex, 1)
+			oldSceneTitleTex := rest[matchIndexes[0]:matchIndexes[1]]
+			oldCharacterList := rest[matchIndexes[4]:matchIndexes[5]]
+			newSceneTitleTex := strings.Replace(
+				oldSceneTitleTex,
+				oldCharacterList,
+				// we have to re-insert the }{ that was "removed" by the regex
+				fmt.Sprintf("}{%s", newCharactersList),
+				1,
+			)
+			fileContent = strings.Replace(
+				fileContent,
+				oldSceneTitleTex,
+				newSceneTitleTex,
+				1,
+			)
 			rest = rest[matchIndexes[1]:]
 		}
 	}
