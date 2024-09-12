@@ -35,28 +35,21 @@ Now comes the main part: writing the actual play! In order to correctly format t
 
 * `\BlockStageDirection Stage direction` - Add a large stage direction (i.e. multiple characters entering the stage and interacting with each other without saying anything) that is important enough to be "its own line". Please note the absence of curly braces around the actual stage direction!
 
-#### Fill out the table of scenes and appearances
-By running one of the scripts, you can auto-generate this table. However, you will need to fill in the page numbers and silent appearances manually. The script will generate a table with all the scenes and the characters that appear in them.
+## Automatically generating the scene table and per-scene occurrences
+There are some scripts that can automatically generate the scene table and the per-scene occurrence lists. You can run them in the following way:
 
 ```sh
 cd go-scripts
 go run . create-scene-table --src ../src
+go run . update-scene-occurrence-subtitles --src ../src
+
+# Page numbers can be added automatically based on a pre-compiled PDF.
+# Running this script shouldn't change the page numbers.
+go run . extract-page-numbers --src "../src" --pdf "../compiled.pdf"
 ```
 
-This table's code should then look somewhat like this:
-
-```tex
-Scene & Pages & Character 1 & Character 2 & ... & Character n \\ \hline
-1 & 1-2 &  &  & ... & \cellcolor{TableColorAppearance} \\ \hline % In this scene, Character n might be having a monologue
-2 & 2-5 & \cellcolor{TableColorAppearance} & \cellcolor{TableColorAppearance} & ... & \cellcolor{TableColorSemiAppearance} + \\ \hline % Now Character 1 and Character 2 might be discussing something while Character n is just observing from the background
-...
-k & i-j &  &  & ... & \cellcolor{TableColorAppearance} \\ \hline % Perhaps Character n ends the play with another monologue
-```
-
-## Customize the playbook
-Time to get creative! You might want to customize the very first page (which is currently directed towards strangers, asking them to return the playbook in case it is lost by a cast member and then found by somebody) by adding your group's contact information.
-
-You could also add some metadata about your play above or below the table of your characters (or anywhere else) and just customize the design until you're happy with it!
+> [!NOTE]
+> The scripts are run automatically on every push to the repository and any changes are auto-committed. You can still run them locally just as well.
 
 ## Compile the playbook
 You can either compile it locally (if you have LaTeX installed) or use the CI to compile it for you. The CI will automatically upload the PDF to the `gh-pages` branch, so you can easily share the link with your cast and crew once you've deployed that branch to GitHub pages.
