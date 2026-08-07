@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
         with:
           go-version: 1.23.1
 
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
         with:
           root_file: main.tex
           working_directory: src
@@ -29,7 +29,7 @@ jobs:
           cd ..
 
       - name: Push changes
-        uses: actions-x/commit@v6
+        uses: actions-x/commit@803b20e5b72c0425eb7919c42c321e67c5bc5d2d # v6
         with:
           email: github-actions[bot]@users.noreply.github.com
           username: github-actions[bot]
@@ -38,7 +38,7 @@ jobs:
 
       - name: Re-compile LaTeX document
         if: github.ref == 'refs/heads/main'
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
         with:
           root_file: main.tex
           working_directory: src
@@ -49,7 +49,7 @@ jobs:
         run: mkdir build && cp src/main.pdf build/play.pdf && cp -r docs/* build/
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
