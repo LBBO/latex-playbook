@@ -69,7 +69,7 @@ func getPageNumbers(srcPath string, pdfPath string) ([][][]int, error) {
 	}
 	defer pdf.Close()
 
-	pdfInfo, err := api.PDFInfo(pdf, path.Base(completePdfPath), nil, nil)
+	pdfInfo, err := api.PDFInfo(pdf, path.Base(completePdfPath), nil, false, nil)
 	if err != nil {
 		return nil, fmt.Errorf("couldn't get pdf info: %w", err)
 	}
