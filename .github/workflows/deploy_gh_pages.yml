@@ -15,7 +15,7 @@ jobs:
           go-version: 1.26.5
 
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4
         with:
           root_file: main.tex
           working_directory: src
@@ -38,7 +38,7 @@ jobs:
 
       - name: Re-compile LaTeX document
         if: github.ref == 'refs/heads/main'
-        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4
         with:
           root_file: main.tex
           working_directory: src
