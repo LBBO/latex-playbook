@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"os"
 
@@ -8,11 +9,11 @@ import (
 	occurrenceSubtitles "github.com/lbbo/latex-playbook/go-scripts/occurrence-subtitles"
 
 	createSceneTableAction "github.com/lbbo/latex-playbook/go-scripts/sceneTable"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 )
 
 func main() {
-	app := &cli.App{
+	cmd := &cli.Command{
 		Name:  "latex playbook scripts",
 		Usage: "Scripts for managing latex playbook",
 		Commands: []*cli.Command{
@@ -20,10 +21,11 @@ func main() {
 				Name:  "create-scene-table",
 				Usage: "Create scene table",
 				Flags: []cli.Flag{
-					&cli.PathFlag{
-						Name:  "src",
-						Usage: "Path to the latex source folder",
-						Value: "../src",
+					&cli.StringFlag{
+						Name:      "src",
+						Usage:     "Path to the latex source folder",
+						Value:     "../src",
+						TakesFile: true,
 					},
 				},
 				Action: createSceneTableAction.CreateSceneTableAction,
@@ -32,10 +34,11 @@ func main() {
 				Name:  "update-scene-occurrence-subtitles",
 				Usage: "Updates the character occurrences in scene's subtitles",
 				Flags: []cli.Flag{
-					&cli.PathFlag{
-						Name:  "src",
-						Usage: "Path to the latex source folder",
-						Value: "../src",
+					&cli.StringFlag{
+						Name:      "src",
+						Usage:     "Path to the latex source folder",
+						Value:     "../src",
+						TakesFile: true,
 					},
 				},
 				Action: occurrenceSubtitles.UpdateCharacterOccurrenceSubtitles,
@@ -44,15 +47,17 @@ func main() {
 				Name:  "extract-page-numbers",
 				Usage: "Create scene table",
 				Flags: []cli.Flag{
-					&cli.PathFlag{
-						Name:  "src",
-						Usage: "Path to the latex source folder",
-						Value: "../src",
+					&cli.StringFlag{
+						Name:      "src",
+						Usage:     "Path to the latex source folder",
+						Value:     "../src",
+						TakesFile: true,
 					},
-					&cli.PathFlag{
-						Name:     "pdf",
-						Usage:    "Path to current PDF file",
-						Required: true,
+					&cli.StringFlag{
+						Name:      "pdf",
+						Usage:     "Path to current PDF file",
+						Required:  true,
+						TakesFile: true,
 					},
 				},
 				Action: extractPageNumbers.ExtractPageNumbers,
@@ -60,7 +65,7 @@ func main() {
 		},
 	}
 
-	if err := app.Run(os.Args); err != nil {
+	if err := cmd.Run(context.Background(), os.Args); err != nil {
 		log.Fatal(err)
 	}
 }

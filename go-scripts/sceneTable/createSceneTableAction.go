@@ -2,6 +2,7 @@ package createSceneTableAction
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"github.com/lbbo/latex-playbook/go-scripts/utils"
 	"io"
@@ -11,7 +12,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 )
 
 type ActOccurrences []map[string]uint
@@ -21,7 +22,7 @@ type FileNamesGetter interface {
 	GetSrcPath() string
 }
 
-func CreateSceneTableAction(c *cli.Context) error {
+func CreateSceneTableAction(ctx context.Context, c *cli.Command) error {
 	playContext, err := utils.GetPlayContext(c.String("src"))
 
 	if err != nil {

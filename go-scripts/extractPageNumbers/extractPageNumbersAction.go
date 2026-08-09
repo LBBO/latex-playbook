@@ -1,18 +1,19 @@
 package extractPageNumbers
 
 import (
+	"context"
 	"fmt"
 	"github.com/lbbo/latex-playbook/go-scripts/utils"
 	"github.com/pdfcpu/pdfcpu/pkg/api"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 	"os"
 	"path"
 	"regexp"
 )
 
-func ExtractPageNumbers(c *cli.Context) error {
-	srcPath := c.Path("src")
-	pdfPath := c.Path("pdf")
+func ExtractPageNumbers(ctx context.Context, c *cli.Command) error {
+	srcPath := c.String("src")
+	pdfPath := c.String("pdf")
 
 	allPageNumbers, err := getPageNumbers(srcPath, pdfPath)
 	if err != nil {

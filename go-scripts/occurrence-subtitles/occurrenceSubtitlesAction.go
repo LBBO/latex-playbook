@@ -1,6 +1,7 @@
 package occurrenceSubtitles
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path"
@@ -9,10 +10,10 @@ import (
 
 	createSceneTableAction "github.com/lbbo/latex-playbook/go-scripts/sceneTable"
 	"github.com/lbbo/latex-playbook/go-scripts/utils"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 )
 
-func UpdateCharacterOccurrenceSubtitles(c *cli.Context) error {
+func UpdateCharacterOccurrenceSubtitles(ctx context.Context, c *cli.Command) error {
 	playContext, err := utils.GetPlayContext(c.String("src"))
 	if err != nil {
 		return err
