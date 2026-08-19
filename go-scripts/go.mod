@@ -3,7 +3,7 @@ module github.com/lbbo/latex-playbook/go-scripts
 go 1.25.0
 
 require (
-	github.com/pdfcpu/pdfcpu v0.14.0
+	github.com/pdfcpu/pdfcpu v0.15.0
 	github.com/urfave/cli/v3 v3.10.1
 )
 
